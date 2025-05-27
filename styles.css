@@ -1,0 +1,214 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+    max-width: 600px;
+    width: 100%;
+}
+
+.title {
+    font-family: 'Dancing Script', cursive;
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 1.5s ease-in;
+}
+
+.heart {
+    background-color: #ff0000;
+    display: inline-block;
+    width: clamp(40px, 8vw, 60px);
+    height: clamp(40px, 8vw, 60px);
+    margin: clamp(20px, 4vw, 40px) auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    position: relative;
+    transform: rotate(-45deg);
+    animation: pulse 1.5s infinite;
+}
+
+.heart:before,
+.heart:after {
+    content: '';
+    background-color: #ff0000;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    animation: none;
+}
+
+.heart:before {
+    top: -50%;
+    left: 0;
+}
+
+.heart:after {
+    top: 0;
+    left: 50%;
+}
+
+.heart:hover {
+    animation: none;
+    transform: rotate(-45deg) scale(1.2);
+}
+
+.message-box {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(5px);
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.message-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+#love-message {
+    color: #ff1493;
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+.photo-frame {
+    margin: 30px 0;
+}
+
+.polaroid {
+    background: linear-gradient(to bottom, #ffffff, #f8f8f8);
+    padding: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    transform: rotate(-3deg);
+    transition: transform 0.3s ease;
+}
+
+.polaroid:hover {
+    transform: rotate(0deg) scale(1.05);
+}
+
+.photo-placeholder {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#couple-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+#couple-photo:hover {
+    transform: scale(1.05);
+}
+
+.caption {
+    font-size: 1.1rem;
+    margin-top: 10px;
+    color: #333;
+}
+
+.glow-button {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    background: linear-gradient(45deg, #8A2BE2, #4B0082);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.glow-button:before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(45deg);
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.glow-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 25px rgba(138, 43, 226, 0.8);
+}
+
+.glow-button:hover:before {
+    transform: rotate(45deg) translateY(300%);
+}
+
+@keyframes pulse {
+    0% { transform: rotate(-45deg) scale(1); }
+    50% { transform: rotate(-45deg) scale(1.2); }
+    100% { transform: rotate(-45deg) scale(1); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+        width: 95%;
+    }
+    
+    .title {
+        font-size: clamp(1.5rem, 8vw, 2rem);
+        margin-bottom: 15px;
+    }
+    
+    .photo-placeholder {
+        width: clamp(150px, 80vw, 200px);
+        height: clamp(150px, 80vw, 200px);
+    }
+    
+    .message-box {
+        padding: 15px;
+        margin: 15px auto;
+        width: 90%;
+    }
+    
+    #love-message {
+        font-size: clamp(0.9rem, 4vw, 1rem);
+    }
+    
+    .glow-button {
+        padding: clamp(10px, 3vw, 15px) clamp(20px, 6vw, 30px);
+        font-size: clamp(0.9rem, 4vw, 1.2rem);
+    }
+}
